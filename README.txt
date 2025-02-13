@@ -5,3 +5,7 @@ BBB with mainline u-boot and kernel:
 PREEMPT_RT kernels:
 
   https://wiki.linuxfoundation.org/realtime/preempt_rt_versions
+
+UPDATED RTW88 DRIVER:
+
+  https://github.com/lwfinger/rtw88
