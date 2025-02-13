@@ -23,6 +23,7 @@ if [ ! -z $1 ]; then
   exit 0
 fi
 
+[ -d ../deploy ] && rm -rf ../deploy
 make $MAKE_ARGS zImage modules dtbs
 make $MAKE_ARGS modules_install INSTALL_MOD_PATH=../deploy/
 KERNEL=$(make kernelrelease)
