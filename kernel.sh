@@ -41,13 +41,15 @@ label Linux microSD
     append console=ttyS0,115200n8 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait earlyprintk mem=512M
 EOF
 
-[ -d rtw88 ] || git clone https://github.com/lwfinger/rtw88
-cd rtw88
-make $MAKE_ARGS KERNEL_SRC=../build/ KERNELRELEASE=$KERNEL
-dest=../deploy/lib/modules/${KERNEL}/kernel/drivers/net/wireless/realtek/rtw88/
+[ -d rtl88x2bu ] || git clone https://github.com/RinCat/RTL88x2BU-Linux-Driver.git rtl88x2bu
+cd rtl88x2bu
+make $MAKE_ARGS KSRC=../build/ LOCALVERSION=$KERNEL
+dest=../deploy/lib/modules/${KERNEL}/kernel/drivers/net/wireless/realtek/88x2bu/
 [ -d $dest ] || mkdir -p $dest
 rm -f ${dest}/*.ko
 find . -name \*.ko -exec cp {} ${dest} \;
+mkdir -p ../deploy/etc/modprobe.d/
+echo "options 88x2bu rtw_switch_usb_mode=2 rtw_drv_log_level=2" > ../deploy/etc/modprobe.d/rtl88x2bu.conf
 cd ..
 
 # depmod -a
