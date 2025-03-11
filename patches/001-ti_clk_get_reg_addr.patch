@@ -1,0 +1,42 @@
+--- drivers/clk/ti/dpll.c
++++ drivers/clk/ti/dpll.c
+@@ -606,6 +606,7 @@
+ 	const struct dpll_data dd = {
+ 		.idlest_mask = 0x1,
+ 		.enable_mask = 0x7,
++		.autoidle_mask = 0, // disable autoidle reg
+ 		.ssc_enable_mask = 0x1 << 12,
+ 		.ssc_downspread_mask = 0x1 << 14,
+ 		.mult_mask = 0x7ff << 8,
+@@ -631,6 +632,7 @@
+ 	const struct dpll_data dd = {
+ 		.idlest_mask = 0x1,
+ 		.enable_mask = 0x7,
++		.autoidle_mask = 0, // disable autoidle reg
+ 		.mult_mask = 0x7ff << 8,
+ 		.div1_mask = 0x7f,
+ 		.max_multiplier = 4095,
+@@ -651,6 +653,7 @@
+ 	const struct dpll_data dd = {
+ 		.idlest_mask = 0x1,
+ 		.enable_mask = 0x7,
++		.autoidle_mask = 0, // disable autoidle reg
+ 		.mult_mask = 0x7ff << 8,
+ 		.div1_mask = 0x7f,
+ 		.max_multiplier = 2047,
+@@ -672,6 +675,7 @@
+ 	const struct dpll_data dd = {
+ 		.idlest_mask = 0x1,
+ 		.enable_mask = 0x7,
++		.autoidle_mask = 0, // disable autoidle reg
+ 		.ssc_enable_mask = 0x1 << 12,
+ 		.ssc_downspread_mask = 0x1 << 14,
+ 		.mult_mask = 0x7ff << 8,
+@@ -696,6 +700,7 @@
+ 	const struct dpll_data dd = {
+ 		.idlest_mask = 0x1,
+ 		.enable_mask = 0x7,
++		.autoidle_mask = 0, // disable autoidle reg
+ 		.mult_mask = 0x7ff << 8,
+ 		.div1_mask = 0x7f,
+ 		.max_multiplier = 2047,

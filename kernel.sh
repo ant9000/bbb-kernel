@@ -8,6 +8,10 @@ MAKE_ARGS="ARCH=arm CROSS_COMPILE=arm-none-eabi- -j$(nproc)"
 
 if [ ! -d build ]; then
   cd linux-src
+  for p in ../patches/*
+  do
+    patch -p0 < "$p"
+  done
   make mrproper
   make O=../build $MAKE_ARGS omap2plus_defconfig
   cd ../build
