@@ -58,3 +58,6 @@ cd ..
 
 # depmod -a
 /sbin/depmod -b deploy/ -F build/System.map ${KERNEL}
+
+[ -d deploy/lib/firmware ] || mkdir -p deploy/lib/firmware/
+cp ti-amx3-cm3-pm-firmware/bin/* deploy/lib/firmware/
